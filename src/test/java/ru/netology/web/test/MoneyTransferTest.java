@@ -31,15 +31,15 @@ public class MoneyTransferTest {
         var secondCard = getSecondCard();
 
         int initialFirstBalance = dashBoardPage.getCardBalance(firstCard);
-        int initialSecendBalanc = dashBoardPage.getCardBalance(secondCard);
+        int initialSecondBalance = dashBoardPage.getCardBalance(secondCard);
 
-        int transferAmount = 1555;
+        int transferAmount = getRandomTransferAmount(initialFirstBalance / 2);
 
         var transferPage = dashBoardPage.selectCard(firstCard);
         dashBoardPage = transferPage.makeTransfer(transferAmount, secondCard);
 
         int expectedFirstCardBalance = initialFirstBalance + transferAmount;
-        int expectedSecondCardBalance = initialSecendBalanc - transferAmount;
+        int expectedSecondCardBalance = initialSecondBalance - transferAmount;
 
         assertEquals(expectedFirstCardBalance, dashBoardPage.getCardBalance(firstCard));
         assertEquals(expectedSecondCardBalance, dashBoardPage.getCardBalance(secondCard));

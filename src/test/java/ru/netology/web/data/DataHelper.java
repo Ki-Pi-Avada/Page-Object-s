@@ -3,6 +3,8 @@ package ru.netology.web.data;
 import lombok.Value;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.Random;
+
 public class DataHelper {
     private DataHelper() {
 
@@ -22,6 +24,10 @@ public class DataHelper {
 
     public static CardInfo getSecondCard() {
         return new CardInfo("5559 0000 0000 0002", "0f3f5c2a-249e-4c3d-8287-09f7a039391d");
+    }
+
+    public static int getRandomTransferAmount(int maxAmount) {
+        return new Random().nextInt(maxAmount - 1) + 1; // от 1 до maxAmount
     }
 
     @Value
